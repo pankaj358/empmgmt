@@ -31,7 +31,7 @@ Build a RESTful WebService for employee CRUD operation and expose through Apache
 - Generate Schedule using below url
    "  http://localhost:8080/emp-mgmt/employee" - HttpMethodType - Get
    
-# ======== Technology Use =======
+# ======== Technologies Use =======
  Java8
  SpringBoot
  Apache Camel
