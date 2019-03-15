@@ -27,6 +27,7 @@ public class EmployeeRoute extends RouteBuilder
          .get("/employee")
           .description("Find all employee")
            .outType(EmployeeModel[].class)
+            .enableCORS(true)
             .responseMessage()
               .code(200)
                .message("All Employee Successfully returned")

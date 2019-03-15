@@ -27,4 +27,7 @@ public class Employee
   @NotBlank
   @Column(name="last_name")
   private String lastName;
+  
+  @Column(name="organisation")
+  private String organisation;
 }
