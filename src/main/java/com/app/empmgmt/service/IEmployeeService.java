@@ -12,5 +12,7 @@ public interface IEmployeeService
   
   public EmployeeModel create(EmployeeModel model);
   
-  public EmployeeModel update(EmployeeModel model);
+  public EmployeeModel update(long id, EmployeeModel model);
+  
+  public EmployeeModel delete(long id);
 }

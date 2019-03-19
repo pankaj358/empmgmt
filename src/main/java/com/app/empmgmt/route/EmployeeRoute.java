@@ -35,19 +35,63 @@ public class EmployeeRoute extends RouteBuilder
                   .to("bean:EmployeeServiceImpl?method=getAll");
     
     rest()
+    .description("Employee Rest service")
+     .consumes("application/json")
+      .produces("application/json")
+       .get("/employee/{id}")
+       .description("Find employee by id")
+        .outType(EmployeeModel.class)
+         .enableCORS(true)
+          .responseMessage()
+           .code(200)
+            .message("Employee details fetch succesffull")
+             .endResponseMessage()
+              .to("bean:EmployeeServiceImpl?method=get(${header.id})");
+    
+    rest()
      .description("Employee Rest Service")
       .consumes("application/json")
         .produces("application/json")
          .post("/employee")
           .description("Save Employee Details")
            .outType(EmployeeModel.class)
+           .enableCORS(true)
             .responseMessage()
              .code(200)
               .message("Employee save successfully")
                .endResponseMessage()
                 .type(EmployeeModel.class)
                 .to("bean:EmployeeServiceImpl?method=create(${body})");
-                 
+    
+    rest()
+     .description("Employee Rest service")
+      .consumes("application/json")
+       .produces("application/json")
+        .put("/employee/{id}")
+         .description("Update employee details")
+          .outType(EmployeeModel.class)
+           .enableCORS(true)
+            .responseMessage()
+             .code(200)
+              .message("Employee details updated successfully")
+               .endResponseMessage()
+                .type(EmployeeModel.class)
+                 .to("bean:EmployeeServiceImpl?method=update(${header.id}, ${body})");
+    
+    rest()
+     .description("Employee Rest Service")
+      .consumes("application/json")
+       .produces("application/json")
+        .delete("/employee/{id}")
+         .description("Delete employee details")
+          .outType(EmployeeModel.class)
+           .enableCORS(true)
+            .responseMessage()
+             .code(200)
+              .message("Employee details deleted successfully")
+               .endResponseMessage()
+                .type(EmployeeModel.class)
+                 .to("bean:EmployeeServiceImpl?method=delete(${header.id})");
   }
   
 }

@@ -48,10 +48,19 @@ public class EmployeeServiceImpl implements IEmployeeService
   }
   
   @Override
-  public EmployeeModel update ( EmployeeModel model )
+  public EmployeeModel update ( long id, EmployeeModel model )
   {
+    model.setId(id);
     Employee entity = employeeRepository.save(mapper.map(model, Employee.class));
     model = mapper.map(entity, EmployeeModel.class);
+    return model;
+  }
+
+  @Override
+  public EmployeeModel delete ( long id )
+  {
+    EmployeeModel model = get(id);
+    employeeRepository.deleteById(id);
     return model;
   }
   
